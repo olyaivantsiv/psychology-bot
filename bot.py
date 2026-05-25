@@ -6,8 +6,7 @@
 import logging
 from telegram import Update, ReplyKeyboardMarkup, KeyboardButton
 from telegram.ext import (
-    Application, CommandHandler, MessageHandler,
-    filters, ContextTypes, ConversationHandler
+    ApplicationBuilder, CommandHandler, MessageHandler,
 )
 
 # ─────────────────────────────────────────────
@@ -140,7 +139,7 @@ async def cancel(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 # ── Запуск бота ───────────────────────────────
 def main():
-    app = Application.builder().token(BOT_TOKEN).build()
+    app = ApplicationBuilder().token(BOT_TOKEN).build()
 
     # ConversationHandler для прийому питань
     conv_handler = ConversationHandler(
